@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 require('dotenv').config();
+const path = require("path");
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
@@ -41,7 +42,7 @@ app.post('/webhook', (req, res) => {
   app.get('/webhook', (req, res) => {
 
     // Your verify token. Should be a random string.
-    let VERIFY_TOKEN = process.env.PAGE_VERIFICATION_TOKEN
+    let VERIFY_TOKEN = process.env.FACEBOOK_PAGE_ACCESS_TOKEN
       
     // Parse the query params
     let mode = req.query['hub.mode'];
